@@ -135,7 +135,7 @@ async function loadDapp() {
         };
         awaitContract();
       } else {
-        document.getElementById("web3_message").textContent="Please connect to Rinkeby Testnet";
+        document.getElementById("web3_message").textContent="Please connect to Ropsten Testnet";
       }
     });
   };

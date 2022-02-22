@@ -8,29 +8,28 @@ contract FunkyCrocs is ERC721Enumerable, Ownable {
     using Address for address;
     
     // Starting and stopping sale, presale and whitelist
-    bool public saleActive = false;
+    bool public saleActive = true;
     bool public whitelistActive = false;
     bool public presaleActive = false;
 
     // Reserved for the team, customs, giveaways, collabs and so on.
-    uint256 public reserved = 150;
+    uint256 public reserved = 2;
 
     // Price of each token
     uint256 public initial_price = 0.04 ether;
     uint256 public price;
 
     // Maximum limit of tokens that can ever exist
-    uint256 public constant MAX_SUPPLY = 10000;
-    uint256 public constant MAX_PRESALE_SUPPLY = 500;
-    uint256 public constant MAX_MINT_PER_TX = 20;
+    uint256 public constant MAX_SUPPLY = 5;
+    uint256 public constant MAX_PRESALE_SUPPLY = 1;
+    uint256 public constant MAX_MINT_PER_TX = 5;
 
     // The base link that leads to the image / video of the token
-    string public baseTokenURI = "https://api.funkycrocs.io/";
+    string public baseTokenURI = "https://APINFTTest.melocomptro.online/";
 
     // Team addresses for withdrawals
     address public a1;
-    address public a2;
-    address public a3;
+   
 
     // List of addresses that have a number of reserved tokens for whitelist
     mapping (address => uint256) public whitelistReserved;
@@ -138,16 +137,14 @@ contract FunkyCrocs is ERC721Enumerable, Ownable {
 
     // Set team addresses
     function setAddresses(address[] memory _a) public onlyOwner {
-        a1 = _a[0];
-        a2 = _a[1];
-        a3 = _a[2];
+        a1 = _a[0x9baA0005AB7E6A279bd90e86Bef6832080C3d5B5];
+        
     }
 
     // Withdraw funds from contract for the team
     function withdrawTeam(uint256 amount) public payable onlyOwner {
         uint256 percent = amount / 100;
-        require(payable(a1).send(percent * 40));
-        require(payable(a2).send(percent * 30));
-        require(payable(a3).send(percent * 30));
+        require(payable(a1).send(percent * 100));
+        
     }
 }

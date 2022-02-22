@@ -10,7 +10,16 @@ module.exports = {
       port: 8545,
       network_id: "*",
     },
-    rinkeby: {
+
+    ropsten: {
+      provider: function () {
+        return new HDWalletProvider(process.env.PRIVATE_KEY, process.env.ROPSTEN_RPC_URL);
+      },
+      network_id: 3,
+      skipDryRun: true,
+    }
+
+    /* rinkeby: {
       provider: function () {
         return new HDWalletProvider(process.env.PRIVATE_KEY, process.env.RINKEBY_RPC_URL);
       },
@@ -23,7 +32,7 @@ module.exports = {
       },
       network_id: 1,
       skipDryRun: true,
-    }
+    } */
   },
   mocha: {
   },
